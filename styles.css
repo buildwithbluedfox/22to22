@@ -1,0 +1,610 @@
+/* ================================================
+   PLAYLIST STORY — BIRTHDAY WEBSITE FOR YASASWINI
+   Design System & Styles
+   ================================================ */
+
+/* ========== CSS VARIABLES ========== */
+:root {
+  /* Color Palette — Wine & Rose */
+  --color-wine-deep: #3D1122;
+  --color-wine: #5C1A33;
+  --color-wine-light: #7A2847;
+  --color-rose: #C9657A;
+  --color-rose-light: #D88A9A;
+  --color-blush: #E8B4BC;
+  --color-blush-light: #F0CDD2;
+  --color-cream: #F5E6E8;
+  --color-cream-warm: #FCF5F6;
+
+  /* Typography */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 10rem;
+
+  /* Animation */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-slow: 1.4s;
+  --duration-slower: 2.5s;
+}
+
+/* ========== RESET & BASE ========== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--color-cream);
+  background: linear-gradient(180deg,
+      var(--color-wine-deep) 0%,
+      var(--color-wine) 30%,
+      var(--color-wine-light) 60%,
+      var(--color-wine) 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========== GRAIN TEXTURE OVERLAY ========== */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ========== TYPOGRAPHY ========== */
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+p {
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+/* ========== FLORAL SVG SYSTEM ========== */
+.floral-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floral-svg {
+  position: absolute;
+  color: var(--color-rose);
+  opacity: 0;
+  will-change: opacity, stroke-dashoffset;
+}
+
+.floral-path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Hero Floral */
+.hero-floral .floral-rose-1 {
+  width: 500px;
+  height: 500px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Playlist Floral */
+.playlist-floral .floral-petal-1 {
+  width: 350px;
+  height: 550px;
+  top: -50px;
+  right: -100px;
+}
+
+/* Chapter Florals */
+.chapter-floral .floral-svg {
+  width: 400px;
+  height: 400px;
+}
+
+.chapter-floral .floral-spiral {
+  top: 50%;
+  left: -150px;
+  transform: translateY(-50%);
+}
+
+.chapter-floral .floral-rose-2 {
+  top: -50px;
+  right: -100px;
+}
+
+.chapter-floral .floral-stem {
+  width: 200px;
+  height: 500px;
+  top: 50%;
+  right: -50px;
+  transform: translateY(-50%);
+}
+
+.chapter-floral .floral-abstract-1 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+}
+
+.chapter-floral .floral-rose-3 {
+  top: -80px;
+  left: -120px;
+}
+
+.chapter-floral .floral-wilted {
+  width: 300px;
+  height: 450px;
+  bottom: -100px;
+  right: -80px;
+}
+
+.chapter-floral .floral-distance {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.chapter-floral .floral-farewell {
+  width: 400px;
+  height: 450px;
+  top: 50%;
+  left: -100px;
+  transform: translateY(-50%);
+}
+
+/* Closing Floral */
+.closing-floral .floral-final-bloom {
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ========== SECTION CONTAINERS ========== */
+.section-container {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  background: linear-gradient(135deg,
+      rgba(92, 26, 51, 0.4) 0%,
+      rgba(61, 17, 34, 0.6) 100%);
+  border-radius: 24px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(201, 101, 122, 0.15);
+  box-shadow:
+    0 4px 30px rgba(61, 17, 34, 0.3),
+    0 0 60px rgba(201, 101, 122, 0.08);
+  transition: box-shadow 0.6s var(--ease-smooth);
+}
+
+.section-container:hover {
+  box-shadow:
+    0 8px 40px rgba(61, 17, 34, 0.4),
+    0 0 80px rgba(201, 101, 122, 0.12);
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 500;
+  font-style: italic;
+  color: var(--color-cream);
+  margin-bottom: var(--space-lg);
+  opacity: 1;
+}
+
+.hero-subtitle {
+  opacity: 1;
+}
+
+.hero-subtitle p {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  font-weight: 300;
+  color: var(--color-blush);
+  margin-bottom: var(--space-xs);
+  line-height: 2;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: var(--space-lg);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  opacity: 1;
+  color: var(--color-rose-light);
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: lowercase;
+}
+
+.scroll-hint svg {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+@keyframes scrollBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+/* ========== PLAYLIST SECTION ========== */
+.playlist-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-md);
+}
+
+.playlist-container {
+  width: 100%;
+  max-width: 500px;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-style: italic;
+  color: var(--color-cream);
+  text-align: center;
+  margin-bottom: var(--space-md);
+  opacity: 1;
+}
+
+.spotify-embed {
+  border-radius: 16px;
+  overflow: hidden;
+  opacity: 1;
+  transform: scale(0.96);
+  transition: transform 0.6s var(--ease-smooth);
+}
+
+.spotify-embed:hover {
+  transform: scale(1.02);
+}
+
+.spotify-embed iframe {
+  display: block;
+  border-radius: 12px;
+}
+
+/* ========== SPOTIFY TRACK EMBED ========== */
+.spotify-track-embed {
+  width: 100%;
+  margin-top: var(--space-md);
+  border-radius: 16px;
+  overflow: hidden;
+  opacity: 1;
+  transform: scale(0.96);
+  transition: transform 0.6s var(--ease-smooth), box-shadow 0.4s var(--ease-smooth);
+  box-shadow: 0 4px 20px rgba(61, 17, 34, 0.3);
+}
+
+.spotify-track-embed:hover {
+  transform: scale(1.02);
+  box-shadow:
+    0 8px 30px rgba(61, 17, 34, 0.4),
+    0 0 40px rgba(201, 101, 122, 0.15);
+}
+
+.spotify-track-embed iframe {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+}
+
+/* ========== SONG CHAPTERS ========== */
+.song-chapter {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-md);
+}
+
+/* Floating Memory Images */
+.memory-image {
+  position: absolute;
+  width: clamp(120px, 20vw, 200px);
+  height: auto;
+  border-radius: 12px;
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(201, 101, 122, 0.15);
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  opacity: 0.85;
+  z-index: 0;
+  transition: transform 0.4s var(--ease-smooth), opacity 0.4s var(--ease-smooth);
+  object-fit: cover;
+}
+
+.memory-image:hover {
+  transform: scale(1.1) rotate(0deg) !important;
+  opacity: 1;
+  z-index: 10;
+}
+
+/* Different positions for variety */
+.memory-image.pos-left-top {
+  left: 5%;
+  top: 15%;
+  transform: rotate(-8deg);
+}
+
+.memory-image.pos-left-bottom {
+  left: 8%;
+  bottom: 20%;
+  transform: rotate(5deg);
+}
+
+.memory-image.pos-right-top {
+  right: 5%;
+  top: 18%;
+  transform: rotate(6deg);
+}
+
+.memory-image.pos-right-bottom {
+  right: 8%;
+  bottom: 15%;
+  transform: rotate(-4deg);
+}
+
+.memory-image.pos-left-center {
+  left: 3%;
+  top: 50%;
+  transform: translateY(-50%) rotate(-6deg);
+}
+
+.memory-image.pos-right-center {
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%) rotate(8deg);
+}
+
+/* Hide on mobile for better UX */
+@media (max-width: 1024px) {
+  .memory-image {
+    width: clamp(80px, 15vw, 120px);
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .memory-image {
+    display: none;
+  }
+}
+
+.chapter-content {
+  text-align: center;
+  max-width: 500px;
+}
+
+.chapter-number {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--color-rose);
+  letter-spacing: 0.3em;
+  margin-bottom: var(--space-sm);
+  opacity: 1;
+}
+
+.song-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-style: italic;
+  color: var(--color-cream);
+  margin-bottom: var(--space-xs);
+  opacity: 1;
+}
+
+.song-movie {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--color-rose-light);
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-md);
+  opacity: 1;
+}
+
+.song-meaning {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-weight: 300;
+  color: var(--color-blush);
+  line-height: 2.2;
+  opacity: 1;
+}
+
+/* ========== CLOSING SECTION ========== */
+.closing {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-md);
+  text-align: center;
+}
+
+.closing-content {
+  position: relative;
+  z-index: 1;
+}
+
+.closing-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-cream);
+  line-height: 2.4;
+  opacity: 1;
+}
+
+.closing-text:last-child {
+  color: var(--color-blush);
+}
+
+/* ========== REVEAL ANIMATIONS (Initial States) ========== */
+.reveal-text {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.reveal-container {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  :root {
+    --space-lg: 3rem;
+    --space-xl: 4rem;
+  }
+
+  .section-container {
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 20px;
+  }
+
+  .floral-svg {
+    transform: scale(0.7);
+  }
+
+  .hero-floral .floral-rose-1 {
+    width: 350px;
+    height: 350px;
+  }
+
+  .closing-floral .floral-final-bloom {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-container {
+    padding: var(--space-sm);
+    margin: 0 var(--space-sm);
+  }
+
+  .hero {
+    padding: var(--space-md);
+  }
+
+  .song-chapter {
+    padding: var(--space-lg) var(--space-sm);
+  }
+}
+
+/* ========== SELECTION ========== */
+::selection {
+  background: var(--color-rose);
+  color: var(--color-cream-warm);
+}
+
+::-moz-selection {
+  background: var(--color-rose);
+  color: var(--color-cream-warm);
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-wine-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-rose);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-rose-light);
+}
